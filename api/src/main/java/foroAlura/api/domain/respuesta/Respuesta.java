@@ -20,12 +20,12 @@ public class Respuesta {
     private Long id;
     private String mensaje;
 
-    @ManyToOne (fetch = FetchType.LAZY)
+    @ManyToOne //(fetch = FetchType.LAZY)
     private Topico topico;
 
     private LocalDateTime fechaCreacion = LocalDateTime.now();
 
-    @ManyToOne (fetch = FetchType.LAZY)
+    @ManyToOne //(fetch = FetchType.LAZY)
     private Usuario usuario;
 
     private boolean solucion;

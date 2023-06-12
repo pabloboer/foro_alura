@@ -35,11 +35,11 @@ public class Topico {
     private StatusTopico status = StatusTopico.NO_RESPONDIDO;
 
     //@JoinColumn(name = "idUsuario")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne//(fetch = FetchType.LAZY)
     @NotNull
     private Usuario usuario;
 
-    @ManyToOne(fetch =FetchType.LAZY)
+    @ManyToOne//(fetch =FetchType.LAZY)
     @NotNull
     private Curso curso;
 
@@ -54,4 +54,21 @@ public class Topico {
         this.respuestas = null;
     }
 
+    public void actualizarDatos(DatosActualizarTopico datosActualizarTopico) {
+        if (datosActualizarTopico.titulo() != null){
+            this.titulo = datosActualizarTopico.titulo();
+        }
+        if (datosActualizarTopico.mensaje() != null){
+            this.mensaje = datosActualizarTopico.mensaje();
+        }
+        if (datosActualizarTopico.statusTopico() != null){
+            this.status = datosActualizarTopico.statusTopico();
+        }
+        if (datosActualizarTopico.usuario() != null){
+            this.usuario = datosActualizarTopico.usuario();
+        }
+        if (datosActualizarTopico.curso() != null){
+            this.curso = datosActualizarTopico.curso();
+        }
+    }
 }
