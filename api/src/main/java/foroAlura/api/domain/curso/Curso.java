@@ -1,6 +1,8 @@
 package foroAlura.api.domain.curso;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,8 +15,8 @@ import lombok.NoArgsConstructor;
 public class Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String nombre;
-    private String categoria;
+    @NotNull private Long id;
+    @NotBlank private String nombre;
+    @NotBlank private String categoria;
 
 }

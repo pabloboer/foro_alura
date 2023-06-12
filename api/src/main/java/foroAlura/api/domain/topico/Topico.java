@@ -5,6 +5,8 @@ import foroAlura.api.domain.respuesta.Respuesta;
 import foroAlura.api.domain.status.StatusTopico;
 import foroAlura.api.domain.usuario.Usuario;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.springframework.validation.annotation.Validated;
@@ -25,23 +27,19 @@ public class Topico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull
-    private String titulo;
-    @NotNull
-    private String mensaje;
-    private LocalDateTime fechaCreacion = LocalDateTime.now();
-
+    @NotBlank private String titulo;
+    @NotBlank private String mensaje;
+    @NotNull private LocalDateTime fechaCreacion = LocalDateTime.now();
     @Enumerated
+    @NotNull
     private StatusTopico status = StatusTopico.NO_RESPONDIDO;
 
     //@JoinColumn(name = "idUsuario")
     @ManyToOne//(fetch = FetchType.LAZY)
-    @NotNull
-    private Usuario usuario;
+    @NotNull private Usuario usuario;
 
     @ManyToOne//(fetch =FetchType.LAZY)
-    @NotNull
-    private Curso curso;
+    @NotNull private Curso curso;
 
     @OneToMany (mappedBy="topico", cascade=CascadeType.ALL, targetEntity = Respuesta.class)
     private List<Respuesta> respuestas = new ArrayList<>();

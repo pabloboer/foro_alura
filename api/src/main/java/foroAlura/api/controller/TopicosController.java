@@ -7,7 +7,6 @@ import foroAlura.api.domain.usuario.Usuario;
 import foroAlura.api.domain.usuario.UsuarioRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -51,7 +49,6 @@ public class TopicosController {
 
             // No guardar si esta duplicado
             if (topicoRepository.findByTituloAndMensaje(datosRegistroTopico.titulo(), datosRegistroTopico.mensaje(),paginacion).isEmpty()){
-                System.out.println("unico");
                 Topico topico = topicoRepository.save(new Topico(datosRegistroTopico,usuario, curso));
                 DatosRespuestaTopico datosRespuestaTopico = new DatosRespuestaTopico(topico);
 
@@ -59,9 +56,10 @@ public class TopicosController {
                 return  ResponseEntity.created(url).body(datosRespuestaTopico);
             }
             else {
-                System.out.println("duplicado");
                 return ResponseEntity.badRequest().body("Topico duplicado");
             }
+
+
         }
     }
     @GetMapping
