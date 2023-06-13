@@ -60,15 +60,15 @@ La API es un CRUD que se podrá realizar a cada entidad creada y que funciona as
 }
 ```
 <div align="center">
-<img src="./resources/readme/token-generado.png" alt="Token generado" width="800" height="300"/>
+<img src="./api/resources/readme/token-generado.png" alt="Token generado" width="800" height="300"/>
 </div>
 
 * Buscar el botón authorize en la esquina superior derecha de la página e ingresar el token generado en autenticacion-controller.
  <div align="center">
-  <img src="./resources/readme/autorization_swagger.png" alt="Authorization button" width="800" height="300"/>
+  <img src="./api/resources/readme/autorization_swagger.png" alt="Authorization button" width="800" height="300"/>
   </div>
  <div align="center">
-  <img src="./resources/readme/available_authorizations.png" alt="Authorization panel" width="800" height="300"/>
+  <img src="./api/resources/readme/available_authorizations.png" alt="Authorization panel" width="800" height="300"/>
 </div>
 
 *  Una vez autenticado podras usar cualquiera de los endpoints generados.
