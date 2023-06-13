@@ -17,4 +17,6 @@ public class AutenticationService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return usuarioRepository.findByNombre(username);
     }
+
+
 }

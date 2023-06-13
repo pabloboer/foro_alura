@@ -1,4 +1,6 @@
 package foroAlura.api.usuario;
 
-public record DatosAutenticacionUsuario(String nombre, String contrasena) {
+import jakarta.validation.constraints.NotBlank;
+
+public record DatosAutenticacionUsuario(@NotBlank String nombre, @NotBlank String contrasena) {
 }

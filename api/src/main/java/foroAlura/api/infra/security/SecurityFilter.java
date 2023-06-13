@@ -27,9 +27,9 @@ public class SecurityFilter extends OncePerRequestFilter {
         String jwtToken = null;
         if (authToken != null ){
             jwtToken = authToken.replace("Bearer ","");
-            System.out.println(jwtToken);
+
             var subject = tokenService.getSubject(jwtToken);
-            System.out.println(subject);
+
             if (jwtToken != null) {
                 var usuario = usuarioRepository.findByNombre(subject);
                 var authentication = new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());

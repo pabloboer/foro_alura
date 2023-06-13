@@ -29,6 +29,8 @@ public class SecurityConfigurations {
                 .authorizeHttpRequests()
                 .requestMatchers(HttpMethod.POST, "/login")
                 .permitAll()
+                .requestMatchers(AUTH_WHITELIST)
+                .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -37,13 +39,20 @@ public class SecurityConfigurations {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager (AuthenticationConfiguration authenticationConfiguration) throws Exception {
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    private static final String[] AUTH_WHITELIST = {
+            "/api/v1/auth/**",
+            "/v3/api-docs/**",
+            "/v3/api-docs.yaml",
+            "/swagger-ui/**",
+            "/swagger-ui.html"
+    };
 }
