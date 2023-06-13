@@ -32,13 +32,42 @@ Este proyecto como challenge durante el desarrollo del curso de formación Java 
 Crearemos una API REST usando Spring boot, nuestra API estará compuesta por tópicos sobre un curso específico, estos tópicos, así como las respuestas a estos solo podrán ser creados por usuarios registrados.
 <br>
 <br>
-La API es un CRUD que se podrá realizar a cada entidad creada y que funciona así:
-
-* Crear un nuevo registro.
-* Mostrar todos registros.
-* Mostrar un registro específico.
-* Actualizar un registro.
-* Eliminar un registro.
+Nuestra API va a centrarse específicamente en los tópicos, y debe permitir a los usuarios:
+   
+   -  Crear un nuevo registro
+   
+   -  Mostrar todos registros
+   
+   -  Mostrar un registro específico
+   
+   -  Actualizar un registro
+   
+   -  Eliminar un registro
+   
+<br>
+   <strong>Se realizó en dos Sprints:</strong>
+   
+   - <strong>Sprint 01:</strong> Se implementó el CRUD del Foro
+   
+      - Se creó el modelo y las funcionalidades escenciales de la API
+   
+      - API con rutas implementadas siguiendo las mejores prácticas del modelo REST
+   
+      - Validaciones realizadas según reglas de negocio   
+   
+      - Implementación de una base de datos para la persistencia de la información
+   
+   
+   - <strong>Sprint 02:</strong> En este sprint, se implementó un mecanismo de autenticación en la API, para que solo los usuarios autenticados puedan interactuar con ella.
+   
+      -  Efectuar cambios en la base de datos para almacenar datos de autenticación de los usuarios
+   
+      -  Insertar maneras de autenticación con Spring Security
+   
+      -  Uso del token JWT
+   
+      -  Documentación con Swagger
+       
 
 </p>
 
