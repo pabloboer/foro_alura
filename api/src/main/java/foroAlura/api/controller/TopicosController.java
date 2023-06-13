@@ -6,9 +6,15 @@ import foroAlura.api.domain.topico.*;
 import foroAlura.api.domain.usuario.Usuario;
 import foroAlura.api.domain.usuario.UsuarioRepository;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -96,6 +102,9 @@ public class TopicosController {
     @ApiResponse(responseCode = "201", description = "Created" ,
             content={@Content(mediaType="application/json",
                     schema=@Schema(implementation=DatosListadoTopicos.class))})
+//    @SecurityRequirement(name = "bearer-key")
+//    @Parameter(in= ParameterIn.HEADER,name = "Autenticated",
+//            description = "Solo un usuario autenticado (con el JWT Token) puede modificar topicos" ,required=true)
     @ApiResponse(responseCode = "403", description = "Forbiden",content={@Content(mediaType="application/json")})
     @ApiResponse(responseCode = "404", description = "Not Found",content={@Content(mediaType="application/json")})
     public ResponseEntity actualizarTopico(@PathVariable Long id,
@@ -111,7 +120,7 @@ public class TopicosController {
         return  ResponseEntity.created(url).body(datosRespuestaTopico);
     }
     @DeleteMapping("/{id}")
-    @Operation(summary = "Elimina el topico elegido", description = "Elimina el topico pasado por Id")
+    @Operation(summary = "Eliminar topico", description = "Elimina el topico pasado por Id")
     @ApiResponse(responseCode = "200", description = "Ok" ,
             content={@Content(mediaType="application/json",
                     schema=@Schema(implementation=DatosListadoTopicos.class))})
